@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare - Mental Health Support</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f9ff;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4a6fa5;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4a6fa5;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #3a5a80;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4a6fa5;
+        }
+
+        .logo span {
+            color: #ff6b6b;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4a6fa5;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+       .hero {
+            background: url('background.jpeg') no-repeat center center/cover;
+            padding: 150px 0 100px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Services Section */
+        .services {
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: #4a6fa5;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+        }
+
+        /* About Section */
+        .about {
+            background: #f0f4f8;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Resources Section */
+        .resources {
+            background: #fff;
+        }
+
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-item {
+            border-left: 4px solid #4a6fa5;
+            padding-left: 15px;
+        }
+
+        .resource-item h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #f0f4f8;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #fff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #4a6fa5;
+            margin-right: 15px;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: #ff6b6b;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .emergency-banner a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+            /* Chatbot Styles */
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform: translateY(calc(100% - 40px));
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#chatbot-container.open {
+  transform: translateY(0);
+}
+
+#chatbot-header {
+  background: #4a6fa5;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chatbot-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#chatbot-messages {
+  height: 300px;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 18px;
+  max-width: 80%;
+}
+
+.user-message {
+  background: #e3f2fd;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+  background: white;
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#chatbot-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#send-btn {
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#send-btn:hover {
+  background: #3a5a80;
+}
+
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.quick-reply {
+  display: inline-block;
+  background: #e3f2fd;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quick-reply:hover {
+  background: #bbdefb;
+}
+/* Chatbot Container */
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transform: translateY(calc(100% - 40px));
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1000;
+  border: 1px solid #e0e5ec;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#chatbot-container.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Chatbot Header */
+#chatbot-header {
+  background: linear-gradient(135deg, #4a6fa5, #3a5a80);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#chatbot-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#chatbot-header h3::before {
+  content: "💬";
+  font-size: 16px;
+}
+
+#chatbot-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+#chatbot-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Chat Messages Area */
+#chatbot-messages {
+  height: 350px;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f8fafc;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d9e6 #f8fafc;
+}
+
+#chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chatbot-messages::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+#chatbot-messages::-webkit-scrollbar-thumb {
+  background-color: #d1d9e6;
+  border-radius: 3px;
+}
+
+/* Individual Messages */
+.message {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  line-height: 1.4;
+  font-size: 14px;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  background: #e3f2fd;
+  color: #2c3e50;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bot-message {
+  background: #ffffff;
+  color: #2c3e50;
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e5ec;
+}
+
+/* Chat Input Area */
+#chatbot-input {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #e0e5ec;
+  background: #ffffff;
+  align-items: center;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #d1d9e6;
+  border-radius: 25px;
+  margin-right: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+#user-input:focus {
+  border-color: #4a6fa5;
+}
+
+#send-btn {
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+#send-btn:hover {
+  background: #3a5a80;
+  transform: scale(1.05);
+}
+
+#send-btn::after {
+  content: "→";
+  font-size: 16px;
+}
+
+/* Toggle Button */
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4a6fa5, #3a5a80);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+#chatbot-toggle::before {
+  content: "💬";
+}
+
+#chatbot-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
+}
+
+/* Quick Reply Buttons */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.quick-reply {
+  background: #e3f2fd;
+  color: #2c3e50;
+  padding: 6px 12px;
+  margin: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  border: 1px solid #d1e3f8;
+}
+
+.quick-reply:hover {
+  background: #bbdefb;
+  transform: translateY(-1px);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  padding: 10px 15px;
+  background: #ffffff;
+  border-radius: 18px;
+  border-bottom-left-radius: 5px;
+  margin-right: auto;
+  width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e5ec;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #4a6fa5;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  #chatbot-container {
+    width: calc(100% - 40px);
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  #chatbot-messages {
+    height: 300px;
+  }
+  
+  #chatbot-toggle {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <p>If you're in crisis, call the National Suicide Prevention Lifeline at <a href="tel:1-800-273-8255">1-800-273-TALK (8255)</a> or text HOME to <a href="sms:741741">741741</a> for 24/7 support.</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Men<span>tara</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Your Mental Health Matters</h1>
+            <p>At MindCare, we provide compassionate, professional mental health services to help you navigate life's challenges and find your path to wellness.</p>
+            <a href="#contact" class="btn">Get Help Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a range of services tailored to meet your individual needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-couch"></i>
+                    <h3>Therapy Sessions</h3>
+                    <p>Individual, couples, and family therapy with licensed professionals in a safe, confidential environment.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Support Groups</h3>
+                    <p>Connect with others facing similar challenges in our professionally facilitated support groups.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Psychiatric Care</h3>
+                    <p>Comprehensive psychiatric evaluations and medication management when needed.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Teletherapy</h3>
+                    <p>Secure online therapy sessions from the comfort of your home or office.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase-medical"></i>
+                    <h3>Crisis Intervention</h3>
+                    <p>Immediate support for individuals experiencing acute mental health crises.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Wellness Programs</h3>
+                    <p>Holistic approaches including mindfulness, stress reduction, and lifestyle counseling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About MindCare</h2>
+                    <p>Founded in 2010, MindCare has been a trusted provider of mental health services in our community. Our team of licensed therapists, psychologists, and psychiatrists are dedicated to providing evidence-based care with compassion and understanding.</p>
+                    <p>We believe that mental health care should be accessible, stigma-free, and tailored to each individual's unique needs. Our approach combines the latest research with personalized attention to help you achieve your goals.</p>
+                    <a href="#contact" class="btn">Learn More About Our Team</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Therapist talking with client">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mental Health Resources</h2>
+                <p>Helpful information and tools to support your mental health journey.</p>
+            </div>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <h3>Understanding Anxiety</h3>
+                    <p>Learn about symptoms, causes, and effective treatments for anxiety disorders.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Depression Guide</h3>
+                    <p>Information on recognizing depression and pathways to recovery.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Mindfulness Techniques</h3>
+                    <p>Simple exercises to help reduce stress and increase present-moment awareness.</p>
+                    <a href="#">Read More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Parenting Support</h3>
+                    <p>Resources for parents dealing with child behavioral or emotional challenges.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from people who have found help and healing through our services.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"MindCare changed my life. After years of struggling with anxiety, I finally found tools that work for me. My therapist was patient, knowledgeable, and truly cared about my progress."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J.">
+                        <div>
+                            <h4>Sarah J.</h4>
+                            <p>Client since 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The support group for depression was exactly what I needed. Connecting with others who understood what I was going through made me feel less alone in my journey."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T.">
+                        <div>
+                            <h4>Michael T.</h4>
+                            <p>Client since 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a busy professional, the teletherapy option has been a game-changer. I can attend sessions during my lunch break without leaving the office."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K.">
+                        <div>
+                            <h4>Priya K.</h4>
+                            <p>Client since 2021</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to schedule an appointment or ask questions about our services.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone">
+                        <select required>
+                            <option value="">I'm interested in...</option>
+                            <option value="therapy">Individual Therapy</option>
+                            <option value="couples">Couples Therapy</option>
+                            <option value="family">Family Therapy</option>
+                            <option value="psychiatric">Psychiatric Services</option>
+                            <option value="groups">Support Groups</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>123 Wellness Way, Suite 200<br>Anytown, ST 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@mindcare.example">info@mindcare.example</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Monday-Friday: 8am-8pm<br>Saturday: 9am-3pm<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindCare</h3>
+                    <p>Providing compassionate mental health care since 2010. Your journey to wellness starts here.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Individual Therapy</a></li>
+                        <li><a href="#">Couples Counseling</a></li>
+                        <li><a href="#">Family Therapy</a></li>
+                        <li><a href="#">Psychiatric Care</a></li>
+                        <li><a href="#">Support Groups</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">HIPAA Compliance</a></li>
+                        <li><a href="#">Insurance Information</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MindCare Mental Health Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle">
+    💬 Chat with us
+</button>
+
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        <h3>Chatbot</h3>
+        <button id="chatbot-close">&times;</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button id="send-btn">→</button>
+    </div>
+</div>
+
+<script>
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener('click', () => {
+        chatbotContainer.classList.toggle('open');
+    });
+
+    chatbotClose.addEventListener('click', () => {
+        chatbotContainer.classList.remove('open');
+    });
+
+    // Send message on button click
+    sendBtn.addEventListener('click', sendMessage);
+
+    // Send message on Enter key press
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const messageText = userInput.value.trim();
+        if (messageText) {
+            addMessage(messageText, 'user-message');
+            userInput.value = '';
+
+            // Get bot response based on user input
+            const botResponse = getBotResponse(messageText);
+            setTimeout(() => {
+                addMessage(botResponse, 'bot-message');
+            }, 1000);
+        }
+    }
+
+    function getBotResponse(message) {
+        message = message.toLowerCase();
+
+        // General mental health support
+        if (message.includes("not feeling okay") || message.includes("can we talk")) {
+            return "I'm here for you. It's okay to talk about how you're feeling. What’s on your mind?";
+        } else if (message.includes("anxious")) {
+            return "Feeling anxious can be tough. Let's explore what's causing your anxiety together.";
+        } else if (message.includes("sad") || message.includes("everything seems fine")) {
+            return "Sometimes, sadness can arise without a clear reason. It's important to acknowledge those feelings.";
+        } else if (message.includes("overwhelming emotions")) {
+            return "Dealing with overwhelming emotions can be challenging. Let's find some coping strategies.";
+        } else if (message.includes("mood check-in")) {
+            return "Sure! How are you feeling right now on a scale of 1 to 10?";
+        }
+
+        // Stress and Anxiety Support
+        if (message.includes("stressed") || message.includes("calm down")) {
+            return "When you're stressed, try to take deep breaths. Inhale for 4 seconds, hold for 4 seconds, and exhale for 4 seconds.";
+        } else if (message.includes("grounding techniques")) {
+            return "Grounding techniques like the 5-4-3-2-1 method can help. Focus on 5 things you can see, 4 things you can touch, 3 things you can hear, 2 things you can smell, and 1 thing you can taste.";
+        } else if (message.includes("stop overthinking")) {
+            return "Try to redirect your thoughts by focusing on the present moment. Mindfulness techniques can be very helpful.";
+        } else if (message.includes("breathing exercises")) {
+            return "Let's do a quick breathing exercise together. Inhale deeply through your nose, hold for a moment, and exhale slowly through your mouth.";
+        } else if (message.includes("feel panicked")) {
+            return "If you're feeling panicked, try to find a quiet space and focus on your breathing. It can help to count your breaths.";
+        }
+
+        // Negative Thoughts and Self-Criticism
+        if (message.includes("negative thoughts")) {
+            return "It's common to have negative thoughts. Let's challenge them together. What specific thought is bothering you?";
+        } else if (message.includes("not good enough")) {
+            return "Many people struggle with feelings of inadequacy. Remember, you are enough just as you are.";
+        } else if (message.includes("stop being hard on myself")) {
+            return "Self-compassion is important. Try to treat yourself as you would treat a friend in the same situation.";
+        } else if (message.includes("reframe a negative thought")) {
+            return "Let's work on reframing that thought. What’s a more positive or realistic way to view the situation?";
+        } else if (message.includes("made a mistake")) {
+            return "Making mistakes is part of being human. What did you learn from this experience?";
+        }
+
+        // Sleep and Rest
+        if (message.includes("can’t sleep") || message.includes("talk until I feel calmer")) {
+            return "I'm here for you. Let’s chat about what's keeping you awake.";
+        } else if (message.includes("relax before bed")) {
+            return "Try a calming bedtime routine. This could include reading, gentle stretching, or listening to soothing music.";
+        } else if (message.includes("thoughts are racing at night")) {
+            return "Journaling before bed can help clear your mind. Write down your thoughts to release them.";
+        } else if (message.includes("calming story") || message.includes("sleep meditation")) {
+            return "Imagine a peaceful place, like a quiet beach or a serene forest. Focus on the sounds and smells around you.";
+        } else if (message.includes("lack of sleep affects my mental health")) {
+            return "Lack of sleep can significantly impact your mood and cognitive function. Ensuring good sleep hygiene is crucial.";
+        }
+
+        // Default response
+        return "I'm here to help! You can ask me about therapy, anxiety, depression, or stress management.";
+    }
+
+    function addMessage(text, className) {
+        const message = document.createElement('div');
+        message.classList.add('message', className);
+        message.textContent = text;
+        chatbotMessages.appendChild(message);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to latest message
+    }
+</script>
+
+<style>
+    /* Chatbot Container */
+    #chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 350px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    #chatbot-container.open {
+        transform: translateY(0);
+    }
+
+    /* Chatbot Header */
+    #chatbot-header {
+        background: #4a6fa5;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #chatbot-header h3 {
+        margin: 0;
+    }
+
+    #chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Chat Messages Area */
+    #chatbot-messages {
+        height: 300px;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f8fafc;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 18px;
+        max-width: 80%;
+    }
+
+    .user-message {
+        background: #e3f2fd;
+        margin-left: auto;
+    }
+
+    .bot-message {
+        background: #ffffff;
+        margin-right: auto;
+    }
+
+    /* Chat Input Area */
+    #chatbot-input {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    #user-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    #send-btn {
+        background: #4a6fa5;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #send-btn:hover {
+        background: #3a5a80;
+    }
+
+    /* Toggle Button */
+    #chatbot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #4a6fa5;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+    }
+</style>
+
+</body>
+</html>
